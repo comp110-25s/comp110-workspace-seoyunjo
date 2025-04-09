@@ -40,9 +40,9 @@ def favorite_color(colors: dict[str, str]) -> str:
     most_common_color = ""
     max_count = 0
 
-    for color in colors:
+    for color in colors.values():
         if color_counts[color] > max_count:
-            most_common_color = colors[color]
+            most_common_color = color
             max_count = color_counts[color]
     return most_common_color
 
@@ -52,6 +52,6 @@ def bin_len(words: list[str]) -> dict[int, set[str]]:
     for word in words:
         word_length = len(word)
         if word_length not in result:
-            result[word_length] = []
-            result[word_length].append(word)
+            result[word_length] = set()
+        result[word_length].add(word)
     return result
